@@ -1,7 +1,6 @@
 package aldovalzani.esercizi;
 
 import aldovalzani.e_commerceClasses.Product;
-import com.github.javafaker.Faker;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +9,6 @@ import java.util.stream.Collectors;
 
 public class Esercizio5 {
     public static void main(String[] args) {
-        Faker faker = new Faker();
         Product product1 = new Product("Electronics", "Laptop", 999.99);
         Product product2 = new Product("Books", "Java Programming", 49.99);
         Product product3 = new Product("Home Appliances", "Vacuum Cleaner", 149.99);
