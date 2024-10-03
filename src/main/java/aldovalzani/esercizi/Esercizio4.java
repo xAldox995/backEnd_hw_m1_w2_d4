@@ -8,6 +8,7 @@ import com.github.javafaker.Faker;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.OptionalDouble;
 
 public class Esercizio4 {
     public static void main(String[] args) {
@@ -31,22 +32,28 @@ public class Esercizio4 {
 
         //Media totale degli ordini
 
-//        double mediaCostoDegliOrdini = orders.stream().
+//        OptionalDouble mediaCostoDegliOrdini = orders.stream().
 //                mapToDouble(order -> order.getProducts().stream().
-//                        mapToDouble(Product::getPrice).sum()).average().orElse(0.0);
+//                        mapToDouble(Product::getPrice).sum()).average();
 //
-//        System.out.println("La media degli ordini si aggira a: € " + mediaCostoDegliOrdini);
+//        if (mediaCostoDegliOrdini.isPresent()) {
+//            System.out.println("La media degli ordini si aggira a: € " + mediaCostoDegliOrdini.getAsDouble());
+//        } else {
+//            System.out.println("Non sono ordini inl ista");
+//        }
 
 
         // Media per ogni ordine
 
         orders.forEach(order -> {
-            double mediaCostoDeiProdotti = order.getProducts().stream()
-                    .mapToDouble(Product::getPrice)
-                    .average()
-                    .orElse(0.0);
-            System.out.println("Numero ordine: " + order.getId() +
-                    ", Prezzo medio del prodotto: € " + mediaCostoDeiProdotti);
+            OptionalDouble mediaCostoDeiProdotti = order.getProducts().stream().mapToDouble(Product::getPrice).average();
+            if (mediaCostoDeiProdotti.isPresent()) {
+                System.out.println("Numero ordine: " + order.getId() +
+                        ", Prezzo medio prodotto: € " + mediaCostoDeiProdotti.getAsDouble());
+            } else {
+                System.out.println("Non sono ordini inl ista");
+            }
+
         });
     }
 }

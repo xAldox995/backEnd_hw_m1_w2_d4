@@ -25,6 +25,7 @@ public class Esercizio3 {
 //        System.out.println("Il prodotto più costoso è: " + mostExpensiveProduct.getName() + " con un prezzo di: € "
 //                + mostExpensiveProduct.getPrice());
 
+
         Optional<Product> mostExpensiveProduct = products.stream().
                 max(Comparator.comparingDouble(Product::getPrice));
 
